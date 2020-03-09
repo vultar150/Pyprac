@@ -20,7 +20,7 @@ while True:
 		break
 	if e.type is pygame.MOUSEBUTTONDOWN:
 		if e.button == 3:
-			windows.append((nwin, pygame.Color(*randcolor()), pygame.Rect(e.pos, SZ)))
+			windows.append((nwin, randcolor(), pygame.Rect(e.pos, SZ)))
 			nwin += 1
 	else:
 		for (i, color, rect) in reversed(windows):

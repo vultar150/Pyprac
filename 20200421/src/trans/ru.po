@@ -1,0 +1,73 @@
+# Russian translations for PACKAGE package
+# Английские переводы для пакета PACKAGE.
+# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Vladimir Ryabchenkov <vladimirryabchenkov@macbook-pro-vladimir-4.local>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-21 14:13+0300\n"
+"PO-Revision-Date: 2020-04-21 13:25+0300\n"
+"Last-Translator: Vladimir Ryabchenkov <vladimirryabchenkov@macbook-pro-"
+"vladimir-4.local>\n"
+"Language-Team: Russian <gnu@d07.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: login.py:16
+msgid "Login UI using Pack"
+msgstr "Окно логина с использованием дурацкого Pack"
+
+#: login.py:21
+msgid "Login"
+msgstr "Логин"
+
+#: login.py:23
+msgid "Font"
+msgstr ""
+
+#: login.py:26
+msgid "logon.png"
+msgstr ""
+
+#: login.py:40 login.py:45 login.py:50
+msgid "Logon message"
+msgstr "Сообщение"
+
+#: login.py:40
+msgid "Hello!"
+msgstr "Привет"
+
+#: login.py:44
+msgid "time"
+msgid_plural "times"
+msgstr[0] "раз"
+msgstr[1] "раза"
+msgstr[2] "РАЗ"
+
+#: login.py:45
+#, python-brace-format
+msgid "Login failed {invlogin} {time}: Invalid username or password."
+msgstr "Неудачный логин {invlogin} {time}! Пароль забыли..."
+
+#: login.py:50
+msgid "The check button works."
+msgstr ""
+
+#: login.py:56
+msgid "Username"
+msgstr ""
+
+#: login.py:64
+msgid "Password"
+msgstr ""
+
+#: login.py:77
+msgid "Remember me"
+msgstr ""

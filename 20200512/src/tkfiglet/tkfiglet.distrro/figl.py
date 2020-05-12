@@ -1,4 +1,5 @@
 from tkinter import *
+from pyfiglet import Figlet
 
 class App(Frame):
 	def __init__(self, master=None, Title="Application", **kwargs):
@@ -10,22 +11,19 @@ class App(Frame):
 		self.rowconfigure(0, weight=1)
 		self.columnconfigure(0, weight=1)
 
-		self.S = StringVar()
-		self.S.set("QWEasd")
-		self.E1 = Entry(self, textvariable=self.S)
+		self.E1 = Entry(self)
 		self.E1.grid(sticky="NEWS")
 
-		self.E2 = Entry(self, textvariable=self.S)
-		self.E2.grid(sticky="NEWS")
+		self.B = Button(self, text = "Button")
+		self.B.grid(sticky = "NEWS")
+		self.B.bind('<Button>', self.f)
 
-		self.S2 = StringVar()
-		self.L = Label(self, textvariable=self.S2)
-		self.L.grid(sticky="NEWS")
-
-		self.E1.bind('<Button>', self.f)
+		self.L = Label(self, font="fixed")
+		self.L.grid()
 
 	def f(self, *args, **kwargs):
-		self.S2.set(self.E1.selection_get())
+		text = Figlet(font='slant')
+		self.L["text"] = text.renderText(self.E1.get())
 
 
 A = App()

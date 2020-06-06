@@ -19,19 +19,22 @@ def redo():
         mb.showinfo("Error", ex)
 
 def open_file():
-    global open_name
+    global open_name, global_open_name
     try:
         if not open_name:
-            open_name = fd.askopenfilename()
-        output = subprocess.check_output(["xxd", "-g1", open_name])
+            global_open_name = fd.askopenfilename()
+        else:
+            global_open_name = open_name
+        output = subprocess.check_output(["xxd", "-g1", global_open_name])
         text.delete(1.0, END)
         text.insert(1.0, output)
+        open_name = None
     except Exception as ex:
         mb.showinfo("Error", ex)
 
 
 def save_text():
-    global open_name, save_name
+    global global_open_name, save_name
     try:
         s = text.get(1.0, END)
         f = open("tmp.txt", "w")
@@ -41,7 +44,7 @@ def save_text():
         if save_name:
             f = open(save_name, "wb")
         else:
-            f = open(open_name, "wb")
+            f = open(global_open_name, "wb")
         f.write(output)
         f.close()
     except Exception as ex:
@@ -49,15 +52,14 @@ def save_text():
 
 
 def save_text_as():
-    global save_name
     try:
-        save_name = fd.asksaveasfilename()
+        save_n = fd.asksaveasfilename()
         s = text.get(1.0, END)
         f = open("tmp.txt", "w")
         f.write(s)
         f.close()
         output = subprocess.check_output(["xxd", "-r", "tmp.txt"])
-        f = open(save_name, "wb")
+        f = open(save_n, "wb")
         f.write(output)
         f.close()
     except Exception as ex:
@@ -78,6 +80,7 @@ text.config(yscrollcommand=scroll.set)
 frame = Frame()
 frame.pack()
 
+global_open_name = ""
 open_name, save_name = None, None
 
 if len(sys.argv) == 2:

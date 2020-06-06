@@ -19,13 +19,16 @@ def redo():
         mb.showinfo("Error", ex)
 
 def open_file():
-    global open_name, global_open_name
+    global open_name, global_open_name, formating
+    form_ = form.get()
+    if len(form_):
+        formating = form_
     try:
         if not open_name:
             global_open_name = fd.askopenfilename()
         else:
             global_open_name = open_name
-        output = subprocess.check_output(["xxd", "-g1", global_open_name])
+        output = subprocess.check_output(["xxd", formating, global_open_name])
         text.delete(1.0, END)
         text.insert(1.0, output)
         open_name = None
@@ -82,6 +85,7 @@ frame.pack()
 
 global_open_name = ""
 open_name, save_name = None, None
+formating = "-g1"
 
 if len(sys.argv) == 2:
     open_name = sys.argv[1]
@@ -103,5 +107,11 @@ b_undo.grid(row=2, column=1, sticky='NEWS')
 
 b_redo = Button(frame, text="Redo", width=10, command=redo)
 b_redo.grid(row=2, column=2, sticky='NEWS')
+
+l1 = Label(frame, text="Format (-g1 initially)", width=10)
+l1.grid(row=3, column=0, columnspan=2, sticky='NEWS')
+
+form = Entry(frame)
+form.grid(row=3, column=2, columnspan=2, sticky='NEWS')
  
 root.mainloop()

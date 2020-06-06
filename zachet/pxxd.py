@@ -3,36 +3,47 @@ import os
 import subprocess
 import sys
 from tkinter import filedialog as fd
+from tkinter import messagebox as mb
 
 
 def open_file():
-    file_name = fd.askopenfilename()
-    output = subprocess.check_output(["xxd", "-g1", file_name])
-    text.delete(1.0, END)
-    text.insert(1.0, output)
+    try:
+        file_name = fd.askopenfilename()
+        output = subprocess.check_output(["xxd", "-g1", file_name])
+        text.delete(1.0, END)
+        text.insert(1.0, output)
+    except:
+        messagebox.showinfo("Error", "Ошибка")
+
 
 
 def save_text():
-    s = text.get(1.0, END)
-    f = open("tmp.txt", "w")
-    f.write(s)
-    f.close()
-    output = subprocess.check_output(["xxd", "-r", "tmp.txt"])
-    f = open("text.txt", "wb")
-    f.write(output)
-    f.close()
+    try:
+        s = text.get(1.0, END)
+        f = open("tmp.txt", "w")
+        f.write(s)
+        f.close()
+        output = subprocess.check_output(["xxd", "-r", "tmp.txt"])
+        f = open("text.txt", "wb")
+        f.write(output)
+        f.close()
+    except:
+        messagebox.showinfo("Error", "Ошибка")
 
 
 def save_text_as():
-    file_name = fd.asksaveasfilename()
-    s = text.get(1.0, END)
-    f = open("tmp.txt", "w")
-    f.write(s)
-    f.close()
-    output = subprocess.check_output(["xxd", "-r", file_name])
-    f = open(file_name, "wb")
-    f.write(output)
-    f.close()
+    try:
+        file_name = fd.asksaveasfilename()
+        s = text.get(1.0, END)
+        f = open("tmp.txt", "w")
+        f.write(s)
+        f.close()
+        output = subprocess.check_output(["xxd", "-r", file_name])
+        f = open(file_name, "wb")
+        f.write(output)
+        f.close()
+    except:
+        messagebox.showinfo("Error", "Ошибка")
 
 
 
@@ -49,7 +60,7 @@ text.config(yscrollcommand=scroll.set)
 frame = Frame()
 frame.pack()
 
- 
+
 b_open = Button(frame, text="Open", width=10, command=open_file)
 b_open.grid(row=0, column=0)
 

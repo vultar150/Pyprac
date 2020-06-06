@@ -13,7 +13,7 @@ def open_file():
         text.delete(1.0, END)
         text.insert(1.0, output)
     except:
-        messagebox.showinfo("Error", "Ошибка")
+        mb.showinfo("Error", "Ошибка")
 
 
 
@@ -28,7 +28,7 @@ def save_text():
         f.write(output)
         f.close()
     except:
-        messagebox.showinfo("Error", "Ошибка")
+        mb.showinfo("Error", "Ошибка")
 
 
 def save_text_as():
@@ -38,12 +38,12 @@ def save_text_as():
         f = open("tmp.txt", "w")
         f.write(s)
         f.close()
-        output = subprocess.check_output(["xxd", "-r", file_name])
+        output = subprocess.check_output(["xxd", "-r", "tmp.txt"])
         f = open(file_name, "wb")
         f.write(output)
         f.close()
     except:
-        messagebox.showinfo("Error", "Ошибка")
+        mb.showinfo("Error", "Ошибка")
 
 
 

@@ -108,7 +108,7 @@ b_undo.grid(row=2, column=1, sticky='NEWS')
 b_redo = Button(frame, text="Redo", width=10, command=redo)
 b_redo.grid(row=2, column=2, sticky='NEWS')
 
-l1 = Label(frame, text="Format (-g1 initially)", width=10)
+l1 = Label(frame, text="Enter format (-g1 initially)", width=10)
 l1.grid(row=3, column=0, columnspan=2, sticky='NEWS')
 
 form = Entry(frame)
